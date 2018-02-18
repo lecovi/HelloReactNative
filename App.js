@@ -23,10 +23,7 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    let logo = {
-      uri: './static/img/leo.jpeg'
-    };
-    let banana = {
+    const banana = {
       uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
     };
     return (
@@ -34,10 +31,11 @@ export default class App extends Component<Props> {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Image source={logo} style={styles.logo}/>
+        <Image source={require('./static/img/leo.jpeg')} style={styles.logo}/>
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
+        <Image source={require('./static/img/mascota_azul_bitson-alpha.png')} />
         <Text style={styles.instructions}>
           {instructions}
         </Text>
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 100,
-    height: 50,
+    height: 80,
   },
   banana: {
     width: 193,
