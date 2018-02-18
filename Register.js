@@ -1,5 +1,5 @@
 /**
- * Created by leo on 17/02/18.
+ * Created by leo on 18/02/18.
  */
 import React, { Component } from 'react';
 import {
@@ -12,16 +12,14 @@ import {
     Button,
     StyleSheet,
 } from 'react-native';
-import Register from './Register'
 
-export default class Login extends Component {
-    onLoginPress(){
-      Alert.alert("You pressed Login");
-    }
+export default class Register extends Component {
     onRegisterPress(){
-      return <Register />;
+      Alert.alert("You pressed Register");
     }
     render() {
+      const {goBack} = this.props.navigation;
+
         return (
             <ScrollView style={style.container}>
               <Text style={style.title}>Welcome to SCA</Text>
@@ -30,9 +28,16 @@ export default class Login extends Component {
                 <Image source={require('./static/img/mascota_azul_bitson-alpha.png')} style={style.logo}/>
                 <Text
                     style={style.screenName}>
-                    Login
+                    Register
                 </Text>
               </View>
+              <TextInput
+                style={style.text}
+                placeholderTextColor="#797979"
+                placeholder='Email'
+                selectionColor="#236ab7"
+                underlineColorAndroid="#236ab7"
+              />
               <TextInput
                 style={style.text}
                 placeholderTextColor="#797979"
@@ -48,17 +53,26 @@ export default class Login extends Component {
                 selectionColor="#236ab7"
                 underlineColorAndroid="#236ab7"
               />
+              <TextInput
+                style={style.text}
+                placeholderTextColor="#797979"
+                placeholder='Verify Password'
+                secureTextEntry
+                selectionColor="#236ab7"
+                underlineColorAndroid="#236ab7"
+              />
+
               <View style={{margin: 7}} />
               <Button
-                      onPress={this.onLoginPress}
-                      title="Login"
+                      onPress={this.onRegisterPress}
+                      title="Register"
                       color="#236ab7"
               />
               <View style={{margin: 7}} />
               <Button
-                      onPress={this.onRegisterPress}
-                      color="#797979"
-                      title="Register"
+                      onPress={() => goBack('B')}
+                      color="#ff9999"
+                      title="Cancel"
               />
             </ScrollView>
             )
