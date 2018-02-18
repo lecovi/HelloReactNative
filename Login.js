@@ -15,8 +15,21 @@ import {
 import Register from './Register'
 
 export default class Login extends Component {
+    constructor(props){
+      super(props);
+      this.focusNextField = this.focusNextField.bind(this);
+      this.onLoginPress = this.onLoginPress.bind(this);
+      this.inputs = {};
+      this.state = {
+        user: '',
+        password: '',
+     };
+    }
+    focusNextField(key) {
+      this.inputs[key].focus();
+    }
     onLoginPress(){
-      Alert.alert("You pressed Login");
+      Alert.alert("Login User:" + this.state.user + "\nPassword: " + this.state.password);
     }
     onRegisterPress(){
       return <Register />;
@@ -34,19 +47,28 @@ export default class Login extends Component {
                 </Text>
               </View>
               <TextInput
+                ref={ input => {this.inputs['usernameInput'] = input;}}
                 style={style.text}
                 placeholderTextColor="#797979"
                 placeholder='Username'
                 selectionColor="#236ab7"
                 underlineColorAndroid="#236ab7"
+                returnKeyType={"next"}
+                blurOnSubmit={false}
+                onChangeText={(user) => this.setState({user: user})}
+                onSubmitEditing={() => {this.focusNextField('passwordInput');}}
               />
               <TextInput
+                ref={ input => {this.inputs['passwordInput'] = input;}}
                 style={style.text}
                 placeholderTextColor="#797979"
                 placeholder='Password'
                 secureTextEntry
                 selectionColor="#236ab7"
                 underlineColorAndroid="#236ab7"
+                returnKeyType={"done"}
+                onChangeText={(password) => this.setState({password: password})}
+                onSubmitEditing={this.onLoginPress}
               />
               <View style={{margin: 7}} />
               <Button
