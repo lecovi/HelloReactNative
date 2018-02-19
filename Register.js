@@ -14,12 +14,16 @@ import {
 } from 'react-native';
 
 export default class Register extends Component {
+    // static navigationOptions = {
+    //     title: 'Registro',
+    //     header: {
+    //       visible: false,
+    //     },
+    //   };
     onRegisterPress(){
       Alert.alert("You pressed Register");
     }
     render() {
-      const {goBack} = this.props.navigation;
-
         return (
             <ScrollView style={style.container}>
               <Text style={style.title}>Welcome to SCA</Text>
@@ -70,7 +74,7 @@ export default class Register extends Component {
               />
               <View style={{margin: 7}} />
               <Button
-                      onPress={() => goBack('B')}
+                      onPress={() => this.props.navigation.goBack()}
                       color="#ff9999"
                       title="Cancel"
               />

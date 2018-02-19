@@ -12,10 +12,10 @@ import {
     Button,
     StyleSheet,
 } from 'react-native';
-import Register from './Register'
+
 
 export default class Login extends Component {
-    constructor(props){
+    constructor(props) {
       super(props);
       this.focusNextField = this.focusNextField.bind(this);
       this.onLoginPress = this.onLoginPress.bind(this);
@@ -23,16 +23,22 @@ export default class Login extends Component {
       this.state = {
         user: '',
         password: '',
-     };
+      };
+    }
+    componentWillMount(){
+      this.props.navigation.setParams({
+        title: 'Ingreso',
+        header: {
+          visible: false,
+        },
+      })
     }
     focusNextField(key) {
       this.inputs[key].focus();
     }
     onLoginPress(){
       Alert.alert("Login User:" + this.state.user + "\nPassword: " + this.state.password);
-    }
-    onRegisterPress(){
-      return <Register />;
+      this.props.navigation.navigate('Secured');
     }
     render() {
         return (
@@ -78,7 +84,7 @@ export default class Login extends Component {
               />
               <View style={{margin: 7}} />
               <Button
-                      onPress={this.onRegisterPress}
+                      onPress={() => this.props.navigation.navigate('Register')}
                       color="#797979"
                       title="Register"
               />

@@ -5,11 +5,12 @@
  */
 
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import Login from './Login';
 import Secured from './Secured'
+import Register from './Register'
 
-type Props = {};
-export default class App extends Component<Props> {
+class HomeScreen extends Component<Props> {
   state = {
     isLoggedIn: false
   };
@@ -22,5 +23,30 @@ export default class App extends Component<Props> {
         return <Login
           onLoginPress={() => this.setState({isLoggedIn: true})}
         />;
+  }
+}
+
+const RootStack = StackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+  Login: {
+    screen: Login,
+  },
+  Register: {
+    screen: Register,
+  },
+  Secured: {
+    screen: Secured,
+  },
+},
+{
+  initialRouteName: 'Login',
+  headerMode: 'screen',
+});
+
+export default class App extends Component {
+  render() {
+    return <RootStack />;
   }
 }
