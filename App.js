@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 import Login from './Login';
 import Secured from './Secured'
 import Register from './Register'
@@ -26,7 +26,7 @@ class HomeScreen extends Component<Props> {
   }
 }
 
-const RootStack = StackNavigator({
+const RootStack = TabNavigator({
   Home: {
     screen: HomeScreen,
   },

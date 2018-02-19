@@ -25,14 +25,14 @@ export default class Login extends Component {
         password: '',
       };
     }
-    componentWillMount(){
-      this.props.navigation.setParams({
-        title: 'Ingreso',
-        header: {
-          visible: false,
-        },
-      })
-    }
+    // componentWillMount(){
+    //   this.props.navigation.setParams({
+    //     title: 'Ingreso',
+    //     header: {
+    //       visible: false,
+    //     },
+    //   })
+    // }
     focusNextField(key) {
       this.inputs[key].focus();
     }
