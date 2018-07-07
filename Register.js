@@ -20,7 +20,7 @@ export default class Register extends Component {
     //       visible: false,
     //     },
     //   };
-    onRegisterPress(){
+    onRegisterPress= () => {
       Alert.alert("You pressed Register");
     }
     render() {
